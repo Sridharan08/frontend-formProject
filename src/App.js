@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState,useEffect } from 'react';
+import Header from './Component/Header/Header';
+import './App.css'
 function App() {
+  const [Form,setform]=useState([])
+  const [insertform,setInsertform]=useState(false)
+  useEffect(()=>{
+    getdetails();
+  },[])
+  const getdetails=async()=>{
+    const res=await axios.get("https://jobformproject.onrender.com/")
+    console.log(res.data.Form);
+    setform(res.data.Form);
+  }
+  console.log(Form);
+  
+  const insertToDb=async(Form)=>{
+
+    const res=await axios.post("https://jobformproject.onrender.com/reg",Form)
+    console.log(res.data.msg);
+    if(res.data.msg ==="Created")
+      setInsertform(true)
+    getdetails();
+  }
+  const deleteForm= async(id)=>{
+    const res=await axios.delete(`https://jobformproject.onrender.com/reg/${id}`)
+    console.log(res);
+    getdetails();
+    if(res.data.msg ==="Deleted"){
+      alert("Form Deleted");
+    } 
+    
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Header  det={Form} insertform={insertform} insertToDb={insertToDb} getFormID={deleteForm}></Header>
   );
 }
 

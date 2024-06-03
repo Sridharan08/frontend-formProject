@@ -1,0 +1,14 @@
+
+.text-md-start{
+    font-style: oblique;
+    margin: center;
+    color: #FF9900;
+    font-size: xx-large;
+    padding-top: 250px;
+    padding-right: 50px;
+    padding-bottom: 150px;
+    padding-left: 500px;
+}
+.text-md-start a{
+    color: #265073;
+}

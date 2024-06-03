@@ -1,11 +1,9 @@
 body{
-    background-color: #f1f0eb;
-
-    
+    background-color: #146eb4;
 }
 ul{
     list-style-type: none;
-    margin: auto;
+    margin: 0;
     padding: right;
     overflow: hidden;
     background-color: #232f3e;
@@ -13,13 +11,13 @@ ul{
     
 }
 li {
-    float: left;
+    float: right;
     
 }
 li a{
     display: block;
     color: white;
-    text-align: left;
+    text-align: right;
     padding: 16px 16px;
     text-decoration: none;
     }
